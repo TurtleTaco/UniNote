@@ -4,11 +4,11 @@ ___
 
 | Type (Two-state)| Example|
 | ------ | ----------- |
-| bit   |  |
-| byte| |
-| shortint    | |
-| int | |
-| longint | |
+| bit   | bit [3:0] a_nibble; |
+| byte| byte a, b; |
+| shortint    |  |
+| int |  |
+| longint |  |
 
 | Type (Four-state)| Example|
 | ------ | ----------- |
