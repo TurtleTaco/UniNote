@@ -17,9 +17,9 @@ ___
 | integer| integer i, j, k; |
 
 #### Variable Types
-| Varible| Example|
+| Variable| Explanation|
 | ------ | ----------- |
-| reg| reg [7:0] a_byte; |
+| l| reg [7:0] a_byte; |
 | logic| logic [7:0] a_byte; |
 
 #### Class
