@@ -17,7 +17,7 @@ ___
 | integer| integer i, j, k; |
 
 #### Variable Types
-| Type (Four-state)| Example|
+| Varible| Example|
 | ------ | ----------- |
 | reg| reg [7:0] a_byte; |
 | logic| logic [7:0] a_byte; |
