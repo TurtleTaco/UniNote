@@ -9,3 +9,8 @@ ___
 | shortint    | |
 | int | |
 | longint | |
+
+| Type (Four-state)| Description |
+| ------ | ----------- |
+| bit   |  |
+| byte| |
