@@ -13,5 +13,5 @@ ___
 | Type (Four-state)| Description |
 | ------ | ----------- |
 | reg| reg [7:0] a_byte; |
-| logic| |
-| integer| |
+| logic| logic [7:0] a_byte; |
+| integer| integer i, j, k; |
