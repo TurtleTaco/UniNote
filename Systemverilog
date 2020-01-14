@@ -16,7 +16,8 @@ ___
 | logic| logic [7:0] a_byte; |
 | integer| integer i, j, k; |
 
-#### Variable
+#### Variable Types
+
 
 #### Class
 ``` verilog
