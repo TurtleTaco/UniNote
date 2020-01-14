@@ -7,5 +7,5 @@ ___
 | bit   |  |
 | byte| |
 | shortint    | |
-| shortint    | |
-| shortint    | |
+| int | |
+| longi | |
