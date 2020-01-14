@@ -2,7 +2,7 @@
 ___
 #### Data Types
 
-| Type (Two-state)| Description |
+| Type (Two-state)| Example|
 | ------ | ----------- |
 | bit   |  |
 | byte| |
@@ -10,7 +10,7 @@ ___
 | int | |
 | longint | |
 
-| Type (Four-state)| Description |
+| Type (Four-state)| Example|
 | ------ | ----------- |
 | reg| reg [7:0] a_byte; |
 | logic| logic [7:0] a_byte; |
