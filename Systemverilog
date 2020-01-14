@@ -6,9 +6,9 @@ ___
 | ------ | ----------- |
 | bit   | bit [3:0] a_nibble; |
 | byte| byte a, b; |
-| shortint    |  |
-| int |  |
-| longint |  |
+| shortint    | shortint c, d; |
+| int | int i,j; |
+| longint | longint lword; |
 
 | Type (Four-state)| Example|
 | ------ | ----------- |
