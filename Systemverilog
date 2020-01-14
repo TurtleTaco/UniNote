@@ -19,7 +19,7 @@ ___
 #### Variable Types
 | Variable| Explanation|
 | ------ | ----------- |
-| l| reg [7:0] a_byte; |
+| localparam| const v |
 | logic| logic [7:0] a_byte; |
 
 #### Class
