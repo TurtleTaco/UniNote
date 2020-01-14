@@ -17,7 +17,7 @@ ___
 | integer| integer i, j, k; |
 
 #### Class
-```
+``` js
 class packet;
          bit [31:0] addr;
   static bit [31:0] id;
