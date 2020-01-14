@@ -22,7 +22,6 @@ ___
 | localparam| const variables |
 | parameter| mutable |
 
-
 #### Class
 ``` verilog
 class packet;
