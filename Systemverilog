@@ -15,7 +15,7 @@ ___
 | reg| reg [7:0] a_byte; |
 | logic| logic [7:0] a_byte; |
 | integer| integer i, j, k; |
-
+___
 #### Variable Types
 | Variable| Explanation|
 | ------ | ----------- |
