@@ -19,8 +19,8 @@ ___
 #### Variable Types
 | Variable| Explanation|
 | ------ | ----------- |
-| localparam| const v |
-| logic| logic [7:0] a_byte; |
+| localparam| const variables |
+| parameter| mutable |
 
 #### Class
 ``` verilog
