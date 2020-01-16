@@ -1,7 +1,7 @@
 ### SystemVerilog Syntax
 ___
 #### Data Types
-as
+
 | Type (Two-state)| Example|
 | ------ | -------- |
 | bit   | bit [3:0] a_nibble; |
