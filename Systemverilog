@@ -1,45 +1,95 @@
-### SystemVerilog Syntax
-___
-#### Data Types
+## Bitstream Generation:
 
-| Type (Two-state)| Example|
-| ------ | -------- |
-| bit   | bit [3:0] a_nibble; |
-| byte| byte a, b; |
-| shortint    | shortint c, d; |
-| int | int i,j; |
-| longint | longint lword; |
+1. from the arch prototxt: 
+   Example:
+    ```
+	Performance Estimator Throughput Breakdown for agg = 3
+	Arch: 5x2x16x32_fp11_sb17411_actk16_poolk2_owk16
+    ```
+   	use "5x2x16x32_fp11.prototxt" as the architecture name
 
-| Type (Four-state)| Example|
-| ------ | ----------- |
-| reg| reg [7:0] a_byte; |
-| logic| logic [7:0] a_byte; |
-| integer| integer i, j, k; |
-___
-#### Variable Types
-| Variable| Explanation|
-| ------ | ----------- |
-| localparam| const variables |
-| parameter| mutable |
+2.  Copy "5x2x16x32_fp11.prototxt" to .../dla/dla/arch_description/5x2x16x32_fp11.prototxt
+    ```
+    cp 5x2x16x32_fp11.prototxt arch_descriptions/
+    ```
+    Check if the arch is in this folder with: 
+    ```
+    ls | grep 5x2
+    ```
+3. Editing scripts
+	1.  scripts/dla_internreg_db.py
+        may need to add write permission to this file by: 
+        ```
+        chmod +w scripts/
+        ```
+        Editing dla_internreg_db.py
+        ```
+        dla_internreg_db.py
+            142		 people_counter = '5x2x16x32_fp11.prototxt' 		
 
-#### Class
-``` verilog
-class packet;
-         bit [31:0] addr;
-  static bit [31:0] id;
- 
-  function display(bit [31:0] a,b);
-    $display("Values are %0d %0d",a,b);
-  endfunction
-endclass
- 
-module sro_class;
-  int id=10;
-  initial begin
-    packet p;
-    p = new();
-    packet::id = 20;
-    p.display(packet::id,id);
-  end
-endmodule
-```
+            432       	 Archs.people_counter : {
+            433                 Graphs.medium
+            434              },
+        ```
+	    note: people_counter is the prototxt name used here for example
+	2.  
+        ```
+        chmod +w dla_arch_database.py
+        ```                 
+        from within regtest/hld/opencl/designs/dla
+
+4. 
+    ```
+    arch shell python
+    ```
+5.  Edit dla_arch_database.py
+    ```
+        653	 '5x2x16x32_fp11' :
+        654      {
+        655      'args' : '-DARCH=5x2x16x32_fp11',
+        656      'build_flags' : '',
+        657      'owner': 'kelizeh'
+        658      },
+    ```
+6. removes everything from dla.regtest and regenerate them
+   ```
+   ./dla_generate_regtest_dirs.py -clean
+   ```
+7. check to see if there are a lot of dla.system* files generated
+   ```
+   cd dla.regtests/dla.system
+   ```
+8. The results will be written to dla.regtests in "/WW32/dla_release_WW32/regtest/hld/opencl/designs/dla/" folder, thus we need access to this directory
+   ```
+   chmod -R 777 dla.regtests
+   ```
+9.  this directory needs to be created before running the command, the full path of this dir is: /nfs/tor/disks/swuser_work_xxxxxx/depot/dla/rel/2019/WW32/dla_release_WW32/bit_gen/
+    ```
+    mkdir bit_gen
+    ```
+10. Create "pert.conf" in any directory with the below content:
+	```
+	regtest_repository /nfs/tor/disks/swuser_work_xxxxxx/depot/dla/rel/2019/WW32/dla_release_WW32/
+	results_directory /nfs/tor/disks/swuser_work_xxxxxx/depot/dla/rel/2019/WW32/dla_release_WW32/bit_gen
+	find_tests_from_disk on
+	rerun_if_collected on
+	cache_resources off
+	return_file_mode min
+
+	regtest_path regtest/hld/opencl/designs/dla/dla.regtests/dla.system.5x2x16x32_fp11 --compiler-args=-v --board=a10_1150_sg1_r3PRQ:a10gx_2ddr  --flow=default --create_hw_build=1 --dla_version=1.1.0 --force_aocx_compile=0 --seed=1-10
+    ```
+
+10. from the directory of "pert.conf", submitting the job to farm and produce the result website for job tracking
+    ```
+    reg_exe --priority=65 --group=dla --farm
+    ```
+11. run from dla/dla/scripts folder, return the best fmax bitstream from the generated bitstreams in the seed range
+    ```
+    ./dla_collect_aocx $RESULTS_DIRECTORY_FROM_PERT_CONF $OUTPUT_DIR_FOR_AOCX
+    ```
+
+12. To view the bitgen and fmax related to the bitstream, go to this directory:
+	```
+    /nfs/tor/disks/swuser_work_linsun/depot/dla/rel/2019/WW32/dla_release_WW32/bit_gen/regtest/hld/opencl/designs/dla/dla.regtests/dla.system.5x2x16x32_fp11/default/a10_1150_sg1_r3PRQ/a10gx_2ddr/seed_1/compile/dla_ip
+	vim acl_quartus_report.txt
+    ```
