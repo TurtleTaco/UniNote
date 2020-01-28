@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shrine (MDC Web Example App)</title>
+  <link rel="shortcut icon" href="https://material.io/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" href="bundle-home.css">
+</head>
+<body class="home">
+
+  <aside class="mdc-drawer mdc-drawer--dismissible">
+    <div class="mdc-drawer__header">
+      <h3 class="mdc-drawer__title">Mail</h3>
+      <h6 class="mdc-drawer__subtitle">email@material.io</h6>
+    </div>
+    <div class="mdc-drawer__content">
+      <div class="mdc-list">
+        <hr class="mdc-list-divider">
+        <h6 class="mdc-list-group__subheader">OPEN EDITOR</h6>
+        <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+          <span class="mdc-list-item__text">Inbox</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+          <span class="mdc-list-item__text">Outgoing</span>
+        </a>
+        <hr class="mdc-list-divider">
+        <h6 class="mdc-list-group__subheader">NOTEBOOK</h6>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+          <span class="mdc-list-item__text">Drafts</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="mdc-drawer-app-content">
+    <header class="mdc-top-app-bar app-bar mdc-top-app-bar--dense" id="app-bar">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
+          <span class="mdc-top-app-bar__title">Dismissible Drawer</span>
+        </section>
+      </div>
+    </header>
+
+    <main class="main-content" id="main-content">
+      <div class="mdc-top-app-bar--fixed-adjust">
+        
+        <div id="container" style="height:100%;"></div>
+        
+      </div>
+    </main>
+  </div>
+
+
+  <div class="mdc-snackbar">
+    <div class="mdc-snackbar__surface">
+      <div class="mdc-snackbar__label"
+           role="status"
+           aria-live="polite">
+        Saved to Git.
+      </div>
+      <div class="mdc-snackbar__actions">
+        <!-- <button type="button" class="mdc-button mdc-snackbar__action">Retry</button> -->
+        <button class="mdc-icon-button mdc-snackbar__dismiss material-icons" title="Dismiss">close</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="bundle-home.js" async></script>
+</body>
+</html>
